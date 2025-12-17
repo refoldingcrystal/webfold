@@ -1,10 +1,10 @@
 import shutil
-from functions import dir_structure
+from functions import dir_structure, generate_list, generate_item
 import os
 import yaml
 import sys
 
-input_dir = "example"
+input_dir = sys.argv[1]
 config_filename = "config.yaml"
 
 input_path = os.path.abspath(input_dir)
@@ -33,8 +33,16 @@ if not os.path.isdir(content_path):
 print(content_path)
 
 structure = dir_structure(content_path)
+# for s in structure: print(s)
 
 output_path = os.path.abspath(os.path.join(input_dir, config["output_dir"]))
 if os.path.isdir(output_path):
     shutil.rmtree(output_path)
-os.makedirs(output_path)
+os.mkdir(output_path)
+
+for item_type, path, dest in structure[1:]:
+    dest_path = os.path.join(output_path, dest)
+    if item_type == "list":
+        generate_list(path, dest_path)
+    else:
+        generate_item(path, dest_path, item_type)
