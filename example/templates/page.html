@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page_title}} - {{site_title}}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="/">{{site_title}}</a></h1>
+        <nav>{{top_nav}}</nav>
+    </header>
+    
+    <main>
+        {{parent_link}}
+        <article>
+            <h2>{{page_title}}</h2>
+            {{content}}
+        </article>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 {{site_title}}</p>
+    </footer>
+</body>
+</html>
